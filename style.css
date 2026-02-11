@@ -31,11 +31,11 @@ body {
     /* ↑ Atstarpe starp teksta rindām (1.6x no fonta izmēra) */
     /* Laba lasāmība */
    
-    color: #1a1a1a;
+    color: #3f012d;
     /* ↑ Teksta krāsa - gandrīz melns (ne 100% melns) */
     /* Hex kods: # + 6 simboli (RR GG BB) */
    
-    background: #b590dc;
+    background: #694392;
     /* ↑ Lapas fona krāsa - gaišs pelēks */
 }
 
@@ -50,7 +50,7 @@ header {
     /* ↑ Iekšējās atstarpes: 2rem augšā/apakšā, 4rem kreisais/labais */
     /* rem = relative unit (1rem ≈ 16px) */
    
-    background: white;
+    background: rgb(0, 179, 192);
     /* ↑ Balts fons */
    
     border-bottom: 1px solid #e5e5e5;
