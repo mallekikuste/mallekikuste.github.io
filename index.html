@@ -1,236 +1,272 @@
 <!DOCTYPE html>
-<!-- ↑ Šis saka pārlūkam: "Šis ir HTML5 dokuments" -->
-
-<html lang="lv">
-<!-- ↑ <html> - Visa lapas sākums. lang="lv" nozīmē latviešu valoda -->
-
+<html lang="en">
 <head>
-<!-- ↑ <head> satur informāciju PAR lapu (lietotājs neredz) -->
 
-    <meta charset="UTF-8">
-    <!-- ↑ Atbalsta latviešu burtus (ā, č, ē, ģ...) -->
+<!-- CHANGE: Page title shown in browser tab -->
+<title>Malle Kikuste</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- ↑ Lai lapa labi izskatās uz mobilajiem telefoniem -->
+<!-- CHANGE: Replace favicon.ico with your favicon file -->
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <title>Portfolio</title>
-    <!-- ↑ Teksts, ko redz pārlūka tab augšā -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
-    <!-- ↑ SVARĪGI! Pievieno CSS failu ar stiliem -->
-    <!-- href="style.css" nozīmē: meklē style.css TAJĀ PAŠĀ mapē -->
+<!-- CHANGE: Replace with your own web font if desired -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
+<style>
+
+/* CHANGE: Global website colours, spacing and typography */
+body{
+margin:0;
+font-family:'Inter', sans-serif;
+background:#ffffff;
+color:#0f0e1b;
+}
+
+/* CHANGE: Header layout, spacing and responsiveness */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:white;
+position:sticky;
+top:0;
+z-index:10;
+border-bottom:1px solid #eee;
+}
+
+/* CHANGE: Artist name styling */
+.logo{
+font-weight:600;
+font-size:20px;
+}
+
+/* CHANGE: Navigation spacing and alignment */
+nav a{
+margin-left:24px;
+text-decoration:none;
+color:#111;
+font-size:14px;
+}
+
+/* CHANGE: Hero section size, spacing and background */
+.hero {
+  height:70vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px;
+
+  /* CHANGE: Hero background image */
+  background-image: url('h1.png'); /* replace with your image path */
+  background-size: cover;       /* ensures image covers whole hero area */
+  background-position: center;  /* centers the image */
+  background-repeat: no-repeat; /* prevents tiling */
+}
+
+/* CHANGE: Hero title styling */
+.hero h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+/* CHANGE: Hero description styling */
+.hero p{
+max-width:600px;
+}
+
+/* CHANGE: Main gallery grid layout */
+.gallery{
+column-count:4;
+column-gap:16px;
+padding:40px;
+}
+
+/* CHANGE: Individual artwork spacing */
+.artwork{
+break-inside:avoid;
+margin-bottom:16px;
+}
+
+/* CHANGE: Artwork image size and hover behaviour */
+.artwork img{
+width:100%;
+cursor:pointer;
+border-radius:6px;
+}
+
+/* CHANGE: Popup viewer background and alignment */
+.popup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+justify-content:center;
+align-items:center;
+z-index:20;
+}
+
+/* CHANGE: Popup media size */
+.popup img, .popup iframe{
+max-width:80%;
+max-height:80%;
+}
+
+/* CHANGE: Close button styling */
+.close{
+position:absolute;
+top:30px;
+right:40px;
+color:white;
+font-size:30px;
+cursor:pointer;
+}
+
+/* CHANGE: About and Contact page layout */
+.section{
+padding:80px 20%;
+line-height:1.7;
+}
+
+/* CHANGE: Footer spacing */
+footer{
+padding:40px;
+text-align:center;
+font-size:14px;
+}
+
+@media(max-width:900px){
+
+/* CHANGE: Gallery columns for tablet */
+.gallery{
+column-count:2;
+}
+
+}
+
+@media(max-width:600px){
+
+/* CHANGE: Gallery columns for mobile */
+.gallery{
+column-count:1;
+}
+
+}
+
+</style>
 </head>
-<!-- ↑ Head beidzas -->
-
 <body>
-<!-- ↑ <body> satur visu, ko lietotājs REDZ lapā -->
-   
-    <!-- ========================================
-         HEADER - Augšējā navigācijas josla
-         ======================================== -->
-    <header>
-    <!-- ↑ Semantiskais tags lapas galvenei -->
-    <!-- Šeit būs logo un menu -->
 
-        <nav>
-        <!-- ↑ <nav> - navigācijas elements -->
+<!-- HEADER NAVIGATION -->
+<header>
 
-            <h1>Malle Kikuste</h1>
-            <!-- ↑ <h1> - Galvenais virsraksts (lielākais) -->
-            <!-- Šeit students raksta savu vārdu -->
+<!-- CHANGE: Artist name text -->
+<div class="logo">Malle Kikuste</div>
 
-            <ul>
-            <!-- ↑ <ul> - Unordered List (saraksts ar punktiem) -->
+<nav>
 
-                <li><a href="index.html">Sākums</a></li>
-                <!-- ↑ <li> - List Item (saraksta elements) -->
-                <!-- <a href="..."> - saite uz citu lapu -->
-                <!-- href="index.html" - ved uz šo pašu lapu -->
+<!-- CHANGE: Navigation labels and links -->
+<a href="#about">About</a>
+<a href="#cv">CV</a>
+<a href="#works">Works</a>
+<a href="#contact">Contact</a>
 
-                <li><a href="about.html">Par mani</a></li>
-                <!-- ↑ Saite uz "Par mani" lapu (vēl nav izveidota) -->
+</nav>
+</header>
 
-                <li><a href="contact.html">Kontakti</a></li>
-                <!-- ↑ Saite uz "Kontakti" lapu (vēl nav izveidota) -->
+<!-- HERO SECTION -->
+<section class="hero">
+<!-- CHANGE: Main homepage title -->
+<h1>Multimedia Artist</h1>
+<!-- CHANGE: Short introduction text -->
+<p>Student at Latvian Art Academy</p>
 
-            </ul>
-            <!-- ↑ Saraksta beigas -->
+</section>
 
-        </nav>
-        <!-- ↑ Navigācijas beigas -->
+<!-- WORKS GALLERY -->
+<section id="works" class="gallery">
 
-    </header>
-    <!-- ↑ Header beidzas -->
+<!-- CHANGE: Replace image paths and popup behaviour -->
+<div class="artwork"><img src="1.jpg" onclick="openPopup('1.jpg')"></div>
+<div class="artwork"><img src="2.jpg" onclick="openPopup('2.jpg')"></div>
+<div class="artwork"><img src="3.jpg" onclick="openPopup('3.jpg')"></div>
+<div class="artwork"><img src="4.jpg" onclick="openPopup('4.jpg')"></div>
 
-    <!-- ========================================
-         MAIN - Galvenais saturs
-         ======================================== -->
-    <main>
-    <!-- ↑ <main> - galvenais lapas saturs -->
+<!-- CHANGE: Example artwork that opens separate page -->
+<div class="artwork"><a href="g5.html"><img src="g5.gif"></a></div>
+<div class="artwork"><a href="g6.html"><img src="g6.gif"></a></div>
+<div class="artwork"><a href="g7.html"><img src="g7.gif"></a></div>
+<div class="artwork"><a href="g8.html"><img src="g8.gif"></a></div>
 
-        <!-- HERO SEKCIJA - Liela intro daļa -->
-        <section class="hero">
-        <!-- ↑ <section> - semantisks satura bloks -->
-        <!-- class="hero" - CSS var mērķēt šo konkrēto sekciju -->
+<!-- CHANGE: Additional popup artworks -->
+<div class="artwork"><img src="9.png" onclick="openPopup('9.png')"></div>
+<div class="artwork"><img src="10.png" onclick="openPopup('10.png')"></div>
+<div class="artwork"><img src="11.png" onclick="openPopup('11.png')"></div>
+<div class="artwork"><img src="12.png" onclick="openPopup('12.png')"></div>
 
-            <h2>Māksliniece<br>un programmētāja</h2>
-            <!-- ↑ <h2> - Otrā līmeņa virsraksts (mazāks par h1) -->
-            <!-- <br> - line break, jauna rinda -->
+</section>
 
-            <p>Radu interaktīvas pieredzes, kurās māksla satiekas ar tehnoloģijām.</p>
-            <!-- ↑ <p> - Paragraph (rindkopa/paragrāfs) -->
+<!-- ABOUT SECTION -->
+<section id="about" class="section">
 
-        </section>
-        <!-- ↑ Hero sekcijas beigas -->
+<!-- CHANGE: Artist biography text -->
+<h2>About</h2>
+<p>
+just got here.
+</p>
 
-        <!-- PORTFOLIO SEKCIJA - Darbu galerija -->
-        <section class="portfolio">
-        <!-- ↑ Jauna sekcija ar class="portfolio" -->
+</section>
 
-            <h2>Izvēlētie darbi</h2>
-            <!-- ↑ Sekcijas virsraksts -->
+<!-- CONTACT SECTION -->
+<section id="contact" class="section">
 
-            <div class="gallery">
-            <!-- ↑ <div> - Container (kastīte grupēšanai) -->
-            <!-- class="gallery" - CSS izmantos, lai izveidotu grid layout -->
+<!-- CHANGE: Contact text and social links -->
+<h2>Contact</h2>
+<p>Email: your@email.com</p>
+<p>Instagram: @artist</p>
+<p>Twitter: @artist</p>
 
-                <!-- PROJEKTS 1 -->
-                <div class="project-card card1">
-                <!-- ↑ Pirmā projekta kartīte -->
-                <!-- 2 klases: "project-card" (vispārīgi stili) + "card1" (specifiskā krāsa) -->
+</section>
 
-                    <div class="img-placeholder"></div>
-                    <!-- ↑ Tukša kastīte attēlam -->
-                    <!-- CSS piešķirs pelēko fonu -->
-                    <!-- Vēlāk var pievienot: <img src="images/project1.jpg"> -->
+<footer>
 
-                    <h3>Projekta nosaukums</h3>
-                    <!-- ↑ <h3> - Trešā līmeņa virsraksts (vēl mazāks) -->
-                    <!-- Students šeit raksta sava darba nosaukumu -->
+<!-- CHANGE: Footer text -->
+© Malle Kikuste 2026
 
-                    <p>Interaktīva instalācija, 2025</p>
-                    <!-- ↑ Īss darba apraksts -->
+</footer>
 
-                </div>
-                <!-- ↑ Projekta 1 beigas -->
+<!-- POPUP VIEWER -->
+<div class="popup" id="popup">
+<span class="close" onclick="closePopup()">×</span>
+<img id="popup-img">
+</div>
 
-                <!-- PROJEKTS 2 -->
-                <div class="project-card card2">
-                <!-- ↑ Otrā projekta kartīte -->
-                <!-- card2 = cita fona krāsa CSS -->
+<script>
 
-                    <div class="img-placeholder"></div>
-                    <!-- ↑ Vieta otrajam attēlam -->
+/* CHANGE: Popup behaviour */
+function openPopup(src){
 
-                    <h3>Projekta nosaukums</h3>
-                    <!-- ↑ Otra projekta nosaukums -->
+document.getElementById('popup').style.display='flex';
 
-                    <p>Ģeneratīvā māksla, 2025</p>
-                    <!-- ↑ Otra projekta apraksts -->
+document.getElementById('popup-img').src=src;
 
-                </div>
-                <!-- ↑ Projekta 2 beigas -->
+}
 
-                <!-- PROJEKTS 3 -->
-                <div class="project-card card3">
-                <!-- ↑ Trešā projekta kartīte -->
+/* CHANGE: Close popup behaviour */
+function closePopup(){
 
-                    <div class="img-placeholder"></div>
-                    <!-- ↑ Vieta trešajam attēlam -->
+document.getElementById('popup').style.display='none';
 
-                    <h3>Projekta nosaukums</h3>
-                    <!-- ↑ Trešā projekta nosaukums -->
+}
 
-                    <p>Web eksperiments, 2025</p>
-                    <!-- ↑ Trešā projekta apraksts -->
-
-                </div>
-                <!-- ↑ Projekta 3 beigas -->
-
-            </div>
-            <!-- ↑ Gallery beidzas -->
-
-        </section>
-        <!-- ↑ Portfolio sekcijas beigas -->
-
-    </main>
-    <!-- ↑ Main satura beigas -->
-
-    <!-- ========================================
-         FOOTER - Apakšējā daļa ar info
-         ======================================== -->
-    <footer>
-    <!-- ↑ <footer> - semantisks tags lapas kājenei -->
-
-        <div class="footer-content">
-        <!-- ↑ Container kas centēs saturu (CSS) -->
-
-            <p>© 2026 Vārds Uzvārds</p>
-            <!-- ↑ Copyright simbols © un vārds -->
-
-            <div class="social-links">
-            <!-- ↑ Container sociālajām saitēm -->
-
-                <a href="#">Instagram</a>
-                <!-- ↑ Saite uz Instagram -->
-                <!-- href="#" - pagaidu, vēlāk aizstāj ar īsto URL -->
-
-                <a href="#">Youtube</a>
-                <!-- ↑ Saite uz Youtube -->
-
-                <a href="#">Facebook</a>
-                <!-- ↑ Saite uz Facebook -->
-
-            </div>
-            <!-- ↑ Social links beidzas -->
-
-        </div>
-        <!-- ↑ Footer content beidzas -->
-
-    </footer>
-    <!-- ↑ Footer beidzas -->
+</script>
 
 </body>
-<!-- ↑ Body beidzas -->
-
 </html>
-<!-- ↑ Visa HTML dokumenta beigas -->
-
-
-<!--
-==============================================
-KOPSAVILKUMS - LAPAS STRUKTŪRA:
-==============================================
-
-1. HEADER (augšā)
-   └── Logo (Vārds Uzvārds) + Menu saites
-
-2. MAIN (vidus)
-   ├── HERO sekcija
-   │   └── Liels virsraksts + apraksts
-   └── PORTFOLIO sekcija
-       └── 3 projektu kartītes
-           ├── Attēla vieta
-           ├── Nosaukums
-           └── Apraksts
-
-3. FOOTER (apakšā)
-   └── Copyright + Sociālās saites
-
-==============================================
-KO MAINĪT:
-==============================================
-
-✏️  Rinda 14: Tavs vārds
-✏️  Rinda 27: Hero virsraksts
-✏️  Rinda 28: Hero apraksts
-✏️  Rinda 40-42: Projekts 1 info
-✏️  Rinda 49-51: Projekts 2 info
-✏️  Rinda 58-60: Projekts 3 info
-✏️  Rinda 71: Copyright vārds
-✏️  Rinda 75-79: Sociālo saišu URL
-==============================================
--->
-
-
