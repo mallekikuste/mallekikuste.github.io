@@ -1,272 +1,306 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- CHANGE: Page title shown in browser tab -->
-<title>Malle Kikuste</title>
-
-<!-- CHANGE: Replace favicon.ico with your favicon file -->
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- CHANGE: Replace with your own web font if desired -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-
-/* CHANGE: Global website colours, spacing and typography */
-body{
-margin:0;
-font-family:'Inter', sans-serif;
-background:#ffffff;
-color:#0f0e1b;
-}
-
-/* CHANGE: Header layout, spacing and responsiveness */
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 40px;
-background:white;
-position:sticky;
-top:0;
-z-index:10;
-border-bottom:1px solid #eee;
-}
-
-/* CHANGE: Artist name styling */
-.logo{
-font-weight:600;
-font-size:20px;
-}
-
-/* CHANGE: Navigation spacing and alignment */
-nav a{
-margin-left:24px;
-text-decoration:none;
-color:#111;
-font-size:14px;
-}
-
-/* CHANGE: Hero section size, spacing and background */
-.hero {
-  height:70vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:40px;
-
-  /* CHANGE: Hero background image */
-  background-image: url('h1.png'); /* replace with your image path */
-  background-size: cover;       /* ensures image covers whole hero area */
-  background-position: center;  /* centers the image */
-  background-repeat: no-repeat; /* prevents tiling */
-}
-
-/* CHANGE: Hero title styling */
-.hero h1{
-font-size:48px;
-margin-bottom:10px;
-}
-
-/* CHANGE: Hero description styling */
-.hero p{
-max-width:600px;
-}
-
-/* CHANGE: Main gallery grid layout */
-.gallery{
-column-count:4;
-column-gap:16px;
-padding:40px;
-}
-
-/* CHANGE: Individual artwork spacing */
-.artwork{
-break-inside:avoid;
-margin-bottom:16px;
-}
-
-/* CHANGE: Artwork image size and hover behaviour */
-.artwork img{
-width:100%;
-cursor:pointer;
-border-radius:6px;
-}
-
-/* CHANGE: Popup viewer background and alignment */
-.popup{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.9);
-justify-content:center;
-align-items:center;
-z-index:20;
-}
-
-/* CHANGE: Popup media size */
-.popup img, .popup iframe{
-max-width:80%;
-max-height:80%;
-}
-
-/* CHANGE: Close button styling */
-.close{
-position:absolute;
-top:30px;
-right:40px;
-color:white;
-font-size:30px;
-cursor:pointer;
-}
-
-/* CHANGE: About and Contact page layout */
-.section{
-padding:80px 20%;
-line-height:1.7;
-}
-
-/* CHANGE: Footer spacing */
-footer{
-padding:40px;
-text-align:center;
-font-size:14px;
-}
-
-@media(max-width:900px){
-
-/* CHANGE: Gallery columns for tablet */
-.gallery{
-column-count:2;
-}
-
-}
-
-@media(max-width:600px){
-
-/* CHANGE: Gallery columns for mobile */
-.gallery{
-column-count:1;
-}
-
-}
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Malle Kikuste</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- HEADER NAVIGATION -->
-<header>
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-<!-- CHANGE: Artist name text -->
-<div class="logo">Malle Kikuste</div>
-
-<nav>
-
-<!-- CHANGE: Navigation labels and links -->
-<a href="#about">About</a>
-<a href="#cv">CV</a>
-<a href="#works">Works</a>
-<a href="#contact">Contact</a>
-
+<nav class="nav">
+  <a href="index.html" class="nav-name">Malle Kikuste</a>
+  <div class="nav-links">
+    <a href="about.html" class="nav-link">about me</a>
+  </div>
 </nav>
-</header>
 
-<!-- HERO SECTION -->
-<section class="hero">
-<!-- CHANGE: Main homepage title -->
-<h1>Multimedia Artist</h1>
-<!-- CHANGE: Short introduction text -->
-<p>Student at Latvian Art Academy</p>
+  <section class="slider-section" id="top">
+    <div class="gallery">
+      <div class="card" 
+           data-title="Cells" 
+           data-date="2026" 
+           data-medium="Digital" 
+           data-description="A poster made during Blender Geometry node studies." 
+           data-type="image" 
+           data-src="works/3d1.png">
+        <img src="thumbnails/thumb3d1.jpg" alt="Artwork One" />
+      </div>
+      
+      <div class="card" 
+           data-title="Kauns / Shame" 
+           data-date="2025" 
+           data-medium="Interactive code using p5.js library" 
+           data-description="An interactive experience challenging the idea of anonymity of digital spaces." 
+           data-type="youtube" 
+     data-src="s83QTB1H-Ek">
+        <img src="thumbnails/thumbrose.jpg" alt="image" />
+      </div>
 
-</section>
+      <div class="card" 
+           data-title="Nav vērts / Not even worth it" 
+           data-date="2024" 
+           data-medium="Stop motion animation" 
+           data-description="An animation made during Stop motion animation studies." 
+                data-type="youtube" 
+     data-src="zyOC4Vha-dI">
+        <img src="thumbnails/thumbnavverts.jpg" alt="image" />
+      </div>
 
-<!-- WORKS GALLERY -->
-<section id="works" class="gallery">
+      <div class="card" 
+           data-title="Homeostasis" 
+           data-date="2025" 
+           data-medium="P5.js library code" 
+           data-description="This artwork explores binarity as a balancing force." 
+           data-type="youtube" 
+     data-src="5uOCeeTFTQI">
+        <img src="thumbnails/thumbhomeo.jpg" alt="image" />
+      </div>
 
-<!-- CHANGE: Replace image paths and popup behaviour -->
-<div class="artwork"><img src="1.jpg" onclick="openPopup('1.jpg')"></div>
-<div class="artwork"><img src="2.jpg" onclick="openPopup('2.jpg')"></div>
-<div class="artwork"><img src="3.jpg" onclick="openPopup('3.jpg')"></div>
-<div class="artwork"><img src="4.jpg" onclick="openPopup('4.jpg')"></div>
+      <div class="card" 
+           data-title="Glo" 
+           data-date="2026" 
+           data-medium="Video Sound" 
+           data-description="A soundscape made during Sound Composition studies." 
+           data-type="youtube" 
+     data-src="ub5chqEKf5c">
+        <img src="thumbnails/thumbglo.jpg" alt="Artwork Five" />
+      </div>
 
-<!-- CHANGE: Example artwork that opens separate page -->
-<div class="artwork"><a href="g5.html"><img src="g5.gif"></a></div>
-<div class="artwork"><a href="g6.html"><img src="g6.gif"></a></div>
-<div class="artwork"><a href="g7.html"><img src="g7.gif"></a></div>
-<div class="artwork"><a href="g8.html"><img src="g8.gif"></a></div>
+            <div class="card" 
+           data-title="Bite" 
+           data-date="2025" 
+           data-medium="Sound" 
+           data-description="An auditory soundscape composed of self-recorded footage." 
+           data-type="youtube" 
+            data-src="vcMTUZGBNSc">
+        <img src="thumbnails/thumbbite.jpg" alt="Artwork Four" />
+      </div>
 
-<!-- CHANGE: Additional popup artworks -->
-<div class="artwork"><img src="9.png" onclick="openPopup('9.png')"></div>
-<div class="artwork"><img src="10.png" onclick="openPopup('10.png')"></div>
-<div class="artwork"><img src="11.png" onclick="openPopup('11.png')"></div>
-<div class="artwork"><img src="12.png" onclick="openPopup('12.png')"></div>
+      <div class="card" 
+           data-title="gif 1/4" 
+           data-date="2024" 
+           data-medium="Digital" 
+           data-description="part of pixel gif series, combined with html code, aim create a precise infinite loop." 
+           data-type="youtube" 
+            data-src="gasEdXofZdw">
+        <img src="thumbnails/thumbrun.gif" alt="Artwork Four" />
+      </div>
 
-</section>
+            <div class="card" 
+           data-title="K2 dance" 
+           data-date="2025" 
+           data-medium="3d animation" 
+           data-description="3D animation made during Blender studies." 
+               data-type="youtube" 
+               data-src="hzC45K2kEwE">
+        <img src="thumbnails/thumbk2.jpg" alt="Artwork Four" />
+      </div>
 
-<!-- ABOUT SECTION -->
-<section id="about" class="section">
+            <div class="card" 
+           data-title="Shape and Form"" 
+           data-date="2024" 
+           data-medium="Vector graphics" 
+           data-description="A poster made during multimedia studies." 
+           data-type="image" 
+           data-src="works/jaukti.png">
+        <img src="thumbnails/thumbjaukti.jpg" alt="Artwork Four" />
+      </div>
 
-<!-- CHANGE: Artist biography text -->
-<h2>About</h2>
-<p>
-just got here.
-</p>
+    </div>
+  </section>
 
-</section>
+  <section class="gallery-section">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">all</button>
+      <button class="filter-btn" data-filter="gif">gif</button>
+      <button class="filter-btn" data-filter="video">video</button>
+      <button class="filter-btn" data-filter="graphic-design">graphic design</button>
+      <button class="filter-btn" data-filter="sound">sound</button>
+    </div>
 
-<!-- CONTACT SECTION -->
-<section id="contact" class="section">
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" data-category="graphic-design"
+        data-title="Cells" data-date="2026" data-medium="Digital"
+        data-description="A poster made during Blender Geometry node studies." data-type="image" data-src="works/3d1.png">
+        <img src="thumbnails/thumb3d1.jpg" alt="Graphic Work" />
+        <div class="item-overlay"><span>view</span></div>
+      </div>
 
-<!-- CHANGE: Contact text and social links -->
-<h2>Contact</h2>
-<p>Email: your@email.com</p>
-<p>Instagram: @artist</p>
-<p>Twitter: @artist</p>
+      <div class="gallery-item" 
+     data-category="video" 
+     data-title="Situācija / A situation" 
+     data-date="2025" 
+     data-medium="360 spatialvideo"
+     data-description="An immersive exploration of transitional spaces. Originally made as a spatial video for viewing through VR glasses, the viewer is placed at an in-between environment, where the digital and the physical intersects, leaving the viewer left with the choice of picking a side." 
+     data-type="youtube" 
+     data-src="u6LPv7B7QZ8">
+  <img src="thumbnails/thumb360.jpg" alt="Situācija" />
+  <div class="item-overlay"><span>view</span></div></div>
 
-</section>
+        <div class="gallery-item" 
+     data-category="graphic-design" 
+     data-title="Shape and Form" 
+     data-date="2024" 
+     data-medium="Vector graphics"
+     data-description="A poster made during multimedia studies." 
+     data-type="image" 
+     data-src="works/jaukti.png">
+  <img src="thumbnails/thumbjaukti.jpg" alt="Situācija" />
+  <div class="item-overlay"><span>view</span></div></div>
 
-<footer>
+      <div class="gallery-item" 
+     data-category="video" 
+     data-title="Kauns / Shame" 
+     data-date="2025" 
+     data-medium="Interactive code using p5.js library"
+     data-description="An interactive experience challenging the idea of anonymity of digital spaces. " 
+     data-type="youtube" 
+     data-src="s83QTB1H-Ek">
+  <img src="thumbnails/thumbrose.jpg" alt="Situācija" />
+  <div class="item-overlay"><span>view</span></div></div>
 
-<!-- CHANGE: Footer text -->
-© Malle Kikuste 2026
+   <div class="gallery-item" 
+     data-category="video" 
+     data-title="K2 dance" 
+     data-date="2025" 
+     data-medium="3d animation"
+     data-description="3D animation made during Blender studies." 
+     data-type="youtube" 
+     data-src="hzC45K2kEwE">
+  <img src="thumbnails/thumbk2.jpg" alt="Situācija" />
+  <div class="item-overlay"><span>view</span></div></div>
 
-</footer>
+   <div class="gallery-item" 
+     data-category="video" 
+     data-title="Nav vērts / Not even worth it" 
+     data-date="2025" 
+     data-medium="Stop motion animation"
+     data-description="An animation made during Stop motion animation studies." 
+     data-type="youtube" 
+     data-src="zyOC4Vha-dI">
+  <img src="thumbnails/thumbnavverts.jpg" alt="Nav vērts" />
+  <div class="item-overlay"><span>view</span></div></div>
 
-<!-- POPUP VIEWER -->
-<div class="popup" id="popup">
-<span class="close" onclick="closePopup()">×</span>
-<img id="popup-img">
+   <div class="gallery-item" 
+     data-category="video" 
+     data-title="Glo" 
+     data-date="2026" 
+     data-medium="Video Sound"
+     data-description="A soundscape made during Sound Composition studies." 
+     data-type="youtube" 
+     data-src="ub5chqEKf5c">
+  <img src="thumbnails/thumbglo.jpg" alt="Nav vērts" />
+  <div class="item-overlay"><span>view</span></div></div>
+
+     <div class="gallery-item" 
+     data-category="gif" 
+     data-title="gif 1/4" 
+     data-date="2025" 
+     data-medium="Video"
+     data-description="part of pixel gif series, combined with html code, aim create a precise infinite loop." 
+     data-type="youtube" 
+     data-src="gasEdXofZdw">
+  <img src="thumbnails/thumbrun.gif" alt="Nav vērts" />
+  <div class="item-overlay"><span>view</span></div></div>
+
+     <div class="gallery-item" 
+     data-category="sound" 
+     data-title="Bite" 
+     data-date="2025" 
+     data-medium="Sound"
+     data-description="An auditory soundscape composed of self-recorded footage." 
+     data-type="youtube" 
+     data-src="vcMTUZGBNSc">
+  <img src="thumbnails/thumbbite.jpg" alt="sound1" />
+  <div class="item-overlay"><span>view</span></div></div>
+
+     <div class="gallery-item" 
+     data-category="gif" 
+     data-title="gif 3/4" 
+     data-date="2025" 
+     data-medium="Video"
+     data-description="part of pixel gif series, combined with html code, aim create a precise infinite loop." 
+     data-type="youtube" 
+     data-src="Q33CzB2uWb0">
+  <img src="thumbnails/thumbbored.gif" alt="pixel gif3" />
+  <div class="item-overlay"><span>view</span></div></div>
+
+     <div class="gallery-item" 
+     data-category="gif" 
+     data-title="gif 2/4" 
+     data-date="2025" 
+     data-medium="Video"
+     data-description="part of pixel gif series, combined with html code, aim create a precise infinite loop." 
+     data-type="youtube" 
+     data-src="flzySkaZuUU">
+  <img src="thumbnails/thumbgirl.gif" alt="pixel gif2" />
+  <div class="item-overlay"><span>view</span></div></div>
+
+
+     <div class="gallery-item" 
+     data-category="gif" 
+     data-title="gif 4/4" 
+     data-date="2025" 
+     data-medium="Video"
+     data-description="part of pixel gif series, combined with html code, aim create a precise infinite loop." 
+     data-type="youtube" 
+     data-src="hbuWKPi0zok">
+  <img src="thumbnails/thumbenergy.gif" alt="pixel gif4" />
+  <div class="item-overlay"><span>view</span></div></div>
+
+
+     <div class="gallery-item" 
+     data-category="video" 
+     data-title="Homeostasis" 
+     data-date="2025" 
+     data-medium="Video"
+     data-description="This artwork explores binarity as a balancing force. " 
+     data-type="youtube" 
+     data-src="5uOCeeTFTQI">
+  <img src="thumbnails/thumbhomeo.jpg" alt="homeostasis" />
+  <div class="item-overlay"><span>view</span></div></div>
+
 </div>
+    </div>
+  </section>
 
-<script>
+  <div class="popup-backdrop" id="popupBackdrop"></div>
+  <div class="popup-card" id="popupCard" role="dialog" aria-modal="true">
+    <button class="popup-close" id="popupClose" aria-label="Close">&#x2715;</button>
+    <div class="popup-media" id="popupMedia"></div>
+    <div class="popup-info">
+      <h2 class="popup-title" id="popupTitle"></h2>
+      <p class="popup-description" id="popupDescription"></p>
+      <div class="popup-meta">
+        <span id="popupDate"></span>
+        <span id="popupMedium"></span>
+      </div>
+    </div>
+  </div>
 
-/* CHANGE: Popup behaviour */
-function openPopup(src){
 
-document.getElementById('popup').style.display='flex';
+  <!-- =============================================
+       FOOTER
+       ============================================= -->
+  <footer class="footer">
 
-document.getElementById('popup-img').src=src;
+    <!-- =============================================
+         COPYRIGHT LINE
+         &copy; renders as the © symbol.
+         Replace "Your Name" with your actual name.
+         Update the year as needed.
+         ============================================= -->
+    <p class="footer-copy">&copy; 2025 Malle Kikuste. All rights reserved.</p>
 
-}
+  </footer>
 
-/* CHANGE: Close popup behaviour */
-function closePopup(){
-
-document.getElementById('popup').style.display='none';
-
-}
-
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>

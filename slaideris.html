@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hover Image Stack</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f4f4;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+
+  .gallery {
+    display: flex;
+    perspective: 1800px;
+    perspective-origin: center center;
+    padding: 0 60px; /* breathing room on edges */
+  }
+
+  .card {
+    flex: 0 0 auto;
+    width: 120px;
+    height: 300px;
+    margin-left: -40px; /* reduced overlap so hover doesn't skip */
+    transform: rotateY(35deg) translateZ(0);
+    transform-origin: center center;
+    transition: transform 0.7s cubic-bezier(.19,1,.22,1);
+    will-change: transform;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .card:first-child {
+    margin-left: 0;
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    display: block;
+    pointer-events: none;
+  }
+
+  /* Premium hover effect */
+  .card:hover {
+    transform: rotateY(0deg) scale(1.25) translateZ(80px);
+    z-index: 50;
+  }
+
+  /* Smooth subtle depth adjustment instead of snapping */
+  .gallery:hover .card:not(:hover) {
+    transform: rotateY(35deg) scale(0.97);
+  }
+
+  /* Popup styles */
+  .popup-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0,0,0,0.8);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.32s;
+  }
+
+  .popup-backdrop.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .popup-card {
+    position: fixed;
+    z-index: 210;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.14);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.32s, transform 0.32s;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -48%);
+    width: 90vw;
+    max-width: 860px;
+    max-height: 85vh;
+  }
+
+  .popup-card.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, -50%);
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    z-index: 10;
+    font-size: 1.1rem;
+    color: #666;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: color 0.2s, background 0.2s;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .popup-close:hover {
+    color: #000;
+    background: #f0f0f0;
+  }
+
+  .popup-media {
+    flex: 0 0 55%;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    max-height: 85vh;
+  }
+
+  .popup-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .popup-info {
+    flex: 1;
+    padding: 2.5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+  }
+
+  .popup-title {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+
+  .popup-description {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  .popup-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="gallery">
+  <div class="card" data-title="Artwork One" data-date="2024" data-medium="Digital" data-description="A beautiful image." data-type="image" data-src="https://picsum.photos/id/1015/800/1100"><img src="https://picsum.photos/id/1015/400/600" alt="Artwork One" /></div>
+  <div class="card" data-title="Artwork Two" data-date="2024" data-medium="Digital" data-description="Another beautiful image." data-type="image" data-src="https://picsum.photos/id/1016/800/1100"><img src="https://picsum.photos/id/1016/400/600" alt="Artwork Two" /></div>
+  <div class="card" data-title="Artwork Three" data-date="2023" data-medium="Digital" data-description="Third image." data-type="image" data-src="https://picsum.photos/id/1018/800/1100"><img src="https://picsum.photos/id/1018/400/600" alt="Artwork Three" /></div>
+  <div class="card" data-title="Artwork Four" data-date="2023" data-medium="Digital" data-description="Fourth image." data-type="image" data-src="https://picsum.photos/id/1020/800/1100"><img src="https://picsum.photos/id/1020/400/600" alt="Artwork Four" /></div>
+  <div class="card" data-title="Artwork Five" data-date="2024" data-medium="Digital" data-description="Fifth image." data-type="image" data-src="https://picsum.photos/id/1024/800/1100"><img src="https://picsum.photos/id/1024/400/600" alt="Artwork Five" /></div>
+  <div class="card" data-title="Artwork Six" data-date="2024" data-medium="Digital" data-description="Sixth image." data-type="image" data-src="https://picsum.photos/id/1027/800/1100"><img src="https://picsum.photos/id/1027/400/600" alt="Artwork Six" /></div>
+  <div class="card" data-title="Artwork Seven" data-date="2023" data-medium="Digital" data-description="Seventh image." data-type="image" data-src="https://picsum.photos/id/1035/800/1100"><img src="https://picsum.photos/id/1035/400/600" alt="Artwork Seven" /></div>
+  <div class="card" data-title="Artwork Eight" data-date="2023" data-medium="Digital" data-description="Eighth image." data-type="image" data-src="https://picsum.photos/id/1039/800/1100"><img src="https://picsum.photos/id/1039/400/600" alt="Artwork Eight" /></div>
+</div>
+
+<!-- Popup / Lightbox -->
+<div class="popup-backdrop" id="popupBackdrop"></div>
+<div class="popup-card" id="popupCard" role="dialog" aria-modal="true">
+  <button class="popup-close" id="popupClose" aria-label="Close">&#x2715;</button>
+  <div class="popup-media" id="popupMedia"></div>
+  <div class="popup-info">
+    <h2 class="popup-title" id="popupTitle"></h2>
+    <p class="popup-description" id="popupDescription"></p>
+    <div class="popup-meta">
+      <span id="popupDate"></span>
+      <span id="popupMedium"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const popupBackdrop = document.getElementById('popupBackdrop');
+  const popupCard = document.getElementById('popupCard');
+  const popupClose = document.getElementById('popupClose');
+  const popupMedia = document.getElementById('popupMedia');
+  const popupTitle = document.getElementById('popupTitle');
+  const popupDesc = document.getElementById('popupDescription');
+  const popupDate = document.getElementById('popupDate');
+  const popupMedium = document.getElementById('popupMedium');
+
+  function openPopup(data) {
+    if (!popupCard) return;
+
+    popupMedia.innerHTML = '';
+
+    if (data.type === 'image') {
+      const img = document.createElement('img');
+      img.src = data.src;
+      img.alt = data.title || '';
+      popupMedia.appendChild(img);
+    }
+
+    if (popupTitle) popupTitle.textContent = data.title || '';
+    if (popupDesc) popupDesc.textContent = data.description || '';
+    if (popupDate) popupDate.textContent = data.date || '';
+    if (popupMedium) popupMedium.textContent = data.medium || '';
+
+    popupBackdrop.classList.add('visible');
+    popupCard.classList.add('visible');
+
+    document.body.style.overflow = 'hidden';
+
+    if (popupClose) popupClose.focus();
+  }
+
+  function closePopup() {
+    if (!popupCard) return;
+
+    popupCard.classList.remove('visible');
+    popupBackdrop.classList.remove('visible');
+    document.body.style.overflow = '';
+
+    setTimeout(() => {
+      popupMedia.innerHTML = '';
+    }, 350);
+  }
+
+  // Add click event to cards
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      openPopup(card.dataset);
+    });
+  });
+
+  // Close events
+  if (popupClose) popupClose.addEventListener('click', closePopup);
+  if (popupBackdrop) popupBackdrop.addEventListener('click', closePopup);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePopup();
+  });
+});
+</script>
+
+</body>
+</html>
