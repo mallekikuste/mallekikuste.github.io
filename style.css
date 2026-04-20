@@ -102,7 +102,7 @@ body {
   line-height: 1.65;
   min-height: 100vh;
   /* Prevent horizontal scroll on mobile */
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 img {
@@ -194,6 +194,10 @@ button {
   display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
   display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
   
+-webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity; 
+  touch-action: pan-x;
+
   justify-content: center;
   align-items: center;
   height: 80vh;
@@ -776,6 +780,9 @@ button {
     perspective: 1800px;
     perspective-origin: center right;
     padding: 0 0px; /* breathing room on edges */
+    display: flex;
+  width: max-content; /* Critical: tells the browser the content is wider than the screen */
+  padding: 0 100px;   /* Adds 'runway' so the 3D cards don't clip at the edges */
   }
 
   .card {
