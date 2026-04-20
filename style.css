@@ -186,7 +186,8 @@ button {
   position: relative;
   margin-top: var(--nav-height);
   padding: 3rem var(--page-padding) 3rem;
-  overflow: auto;
+  overflow: hidden;
+  /* Prevent Safari rubber-band scroll interfering */
   -webkit-overflow-scrolling: touch;
   display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
   display: -ms-flexbox;  /* TWEENER - IE 10 */
@@ -771,10 +772,10 @@ button {
 }
 
 .gallery {
-    display: flex;
+    display: block flex;
     perspective: 1800px;
     perspective-origin: center right;
-    padding: 40px var(40); /* breathing room on edges */
+    padding: 0 0px; /* breathing room on edges */
   }
 
   .card {
