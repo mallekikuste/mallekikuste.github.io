@@ -77,10 +77,11 @@ document.addEventListener('DOMContentLoaded', () => {
      ============================================== */
 
   // 1. Attach to HERO slider cards
-  const sliderCards = document.querySelectorAll('.card');
   sliderCards.forEach(card => {
-    card.addEventListener('click', () => openPopup(card.dataset));
-  });
+  card.addEventListener('click', () => {
+    openPopup(card.dataset);
+  }, { passive: true }); // Tells Safari this won't block scrolling
+});
 
   // 2. Attach to GALLERY grid items
   const galleryItems = document.querySelectorAll('.gallery-item');
