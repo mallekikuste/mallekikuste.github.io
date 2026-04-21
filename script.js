@@ -1,38 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-let touchStartY = 0;
-let isMoving = false;
-
-// Apply to the whole section to ensure vertical swipes are passed through
-const sliderSection = document.querySelector('.slider-section');
-
-sliderSection.addEventListener('touchstart', (e) => {
-  touchStartY = e.touches[0].pageY;
-  isMoving = false;
-}, { passive: true });
-
-sliderSection.addEventListener('touchmove', (e) => {
-  const touchY = e.touches[0].pageY;
-  // If the finger moves more than 5px vertically, the user is scrolling the page
-  if (Math.abs(touchY - touchStartY) > 5) {
-    isMoving = true; 
-  }
-}, { passive: true });
-
-// Modify your card click listener to check 'isMoving'
-const allClickableItems = document.querySelectorAll('.card, .gallery-item');
-allClickableItems.forEach(item => {
-  item.addEventListener('click', (e) => {
-    if (isMoving) {
-      // It was a scroll, not a click. Don't open the popup.
-      return;
-    }
-    openPopup(item.dataset);
-  });
-});
-
   /* ==============================================
-     POPUP ELEMENTS
+     POPUP ELEMENTS3
      ============================================== */
   const popupBackdrop = document.getElementById('popupBackdrop');
   const popupCard     = document.getElementById('popupCard');
@@ -108,11 +77,10 @@ allClickableItems.forEach(item => {
      ============================================== */
 
   // 1. Attach to HERO slider cards
+  const sliderCards = document.querySelectorAll('.card');
   sliderCards.forEach(card => {
-  card.addEventListener('click', () => {
-    openPopup(card.dataset);
-  }, { passive: true }); // Tells Safari this won't block scrolling
-});
+    card.addEventListener('click', () => openPopup(card.dataset));
+  });
 
   // 2. Attach to GALLERY grid items
   const galleryItems = document.querySelectorAll('.gallery-item');
