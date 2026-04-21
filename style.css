@@ -702,9 +702,7 @@ button {
     justify-content: flex-start;
     margin: auto;
     height: 80vh;
-    overflow-x: auto;
-    overflow-y: visible;
-    -webkit-overflow-scrolling: touch;
+    overflow: visible;
     scrollbar-width: none; /* hide scrollbar Firefox */
   }
 
@@ -713,8 +711,10 @@ button {
   }
 
   .gallery {
-    padding: 20px 24px;
-    cursor: grab;
+.gallery {
+    padding: 20px 16px;
+    transform: scale(0.55);
+    transform-origin: center center;
   }
 
   .gallery.is-dragging {
@@ -795,9 +795,9 @@ button {
 
   .card {
     flex: 0 0 auto;
-    width: 130px;
-    height: 310px;
-    margin-left: -40px; /* reduced overlap so hover doesn't skip */
+    width: 90px;
+    height: 220px;
+    margin-left: -25px;
     transform: rotateY(35deg) translateZ(0);
     transform-origin: center center;
     transition: transform 0.7s cubic-bezier(.19,1,.22,1);
