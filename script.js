@@ -98,6 +98,76 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==============================================
+     SLIDER DRAG / TOUCH SCROLL
+     Enables mouse drag on desktop and touch swipe on mobile.
+     Vertical swipes pass through to the page scroll normally.
+     ============================================== */
+  const sliderSection = document.querySelector('.slider-section');
+
+  if (sliderSection) {
+    let startX = 0;
+    let startY = 0;
+    let startScrollLeft = 0;
+    let isDragging = false;
+    let dragMoved = false;
+    const gallery = sliderSection.querySelector('.gallery');
+
+    /* ---- TOUCH (mobile) ---- */
+    sliderSection.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startScrollLeft = sliderSection.scrollLeft;
+      isDragging = true;
+      dragMoved = false;
+    }, { passive: true });
+
+    sliderSection.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+
+      // If moving more vertically than horizontally, let the page scroll
+      if (!dragMoved && Math.abs(dy) > Math.abs(dx)) {
+        isDragging = false;
+        return;
+      }
+
+      dragMoved = true;
+      sliderSection.scrollLeft = startScrollLeft - dx;
+    }, { passive: true });
+
+    sliderSection.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    /* ---- MOUSE DRAG (desktop fallback) ---- */
+    sliderSection.addEventListener('mousedown', (e) => {
+      startX = e.clientX;
+      startScrollLeft = sliderSection.scrollLeft;
+      isDragging = true;
+      dragMoved = false;
+      if (gallery) gallery.classList.add('is-dragging');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) dragMoved = true;
+      sliderSection.scrollLeft = startScrollLeft - dx;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+      if (gallery) gallery.classList.remove('is-dragging');
+    });
+
+    // Prevent card click from firing after a drag
+    sliderSection.addEventListener('click', (e) => {
+      if (dragMoved) e.stopPropagation();
+    }, true);
+  }
+
+  /* ==============================================
      GALLERY FILTER LOGIC (Original)
      ============================================== */
   const filterBtns = document.querySelectorAll('.filter-btn');
