@@ -776,7 +776,7 @@ button {
 }
 
 .gallery {
-    display: block flex;
+    display: flex;
     perspective: 1800px;
     perspective-origin: center right;
     padding: 0 0px; /* breathing room on edges */
