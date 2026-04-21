@@ -701,7 +701,7 @@ button {
     touch-action: pan-y;
     justify-content: flex-start;
     margin: auto;
-    height: auto;
+    height: 60vh;
     overflow-x: auto;
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
