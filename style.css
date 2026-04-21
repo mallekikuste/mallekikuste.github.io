@@ -21,11 +21,11 @@
   */
   --color-bg:           #f5f4f1;
   --color-surface:      #ffffff;
-  --color-text:         #1a1a1a;
-  --color-text-muted:   #888888;
+  --color-text:         #252525;
+  --color-text-muted:   #5e5e5e;
   --color-accent:       #2255ee;
-  --color-border:       #e0ddd8;
-  --color-overlay:      rgba(0, 0, 0, 0.35);
+  --color-border:       #f5f4f1;
+  --color-overlay:      rgba(0, 0, 0, 0.232);
 
   /* --- TYPOGRAPHY ---
      --font-display: used for your name and headings
@@ -36,8 +36,8 @@
      --font-size-name: your name in the nav
      --font-size-heading: popup title and about heading
   */
-  --font-display:       'DM Serif Display', Georgia, serif;
-  --font-body:          'DM Sans', sans-serif;
+  --font-display: 'Your New Font', Georgia, serif;
+--font-body:    'Your New Font', sans-serif;
   --font-size-base:     1rem;
   --font-size-sm:       0.8rem;
   --font-size-nav:      0.85rem;
@@ -701,7 +701,7 @@ button {
     touch-action: pan-y;
     justify-content: flex-start;
     margin: auto;
-    height: 80vh;
+    height: 70vh;
     overflow-x: auto;
     overflow-y: visible;
     -webkit-overflow-scrolling: touch;
