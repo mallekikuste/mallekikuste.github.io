@@ -36,13 +36,14 @@
      --font-size-name: your name in the nav
      --font-size-heading: popup title and about heading
   */
-  --font-display: 'Your New Font', Georgia, serif;
---font-body:    'Your New Font', sans-serif;
+  --font-display:       'DM Serif Display', Georgia, serif;
+  --font-body:          'DM Sans', sans-serif;
   --font-size-base:     1rem;
   --font-size-sm:       0.8rem;
   --font-size-nav:      0.85rem;
   --font-size-name:     1.1rem;
   --font-size-heading:  1.5rem;
+
 
   /* --- SPACING ---
      --nav-height: height of the top navigation bar
